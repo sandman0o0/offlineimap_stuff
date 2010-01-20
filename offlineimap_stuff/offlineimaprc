@@ -1,0 +1,23 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# suit to get started fast.
+
+[general]
+accounts = Test
+pythonfile = ~/gkeyring.py
+
+[Account Test]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Test
+
+[Repository Remote]
+type = IMAP
+remotehost = exchange.cites.uiuc.edu
+remoteuser = sstevens
+remotepasseval = keyring("sstevens", "exchange.cites.uiuc.edu")
+ssl = yes
+folderfilter = lambda foldername: foldername in ['INBOX', 'Sent Items','INBOX/doors','INBOX/archive']
+expunge = yes
